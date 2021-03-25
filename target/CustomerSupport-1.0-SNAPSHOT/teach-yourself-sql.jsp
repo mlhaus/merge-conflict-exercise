@@ -48,6 +48,32 @@
             </c:forEach>
                 
         </table>
+            
+            
+        <h2>SELECT vend_name, prod_name, prod_price<br>
+            FROM vendors, products<br>
+            WHERE vendors.vend_id = products.vend_id;</h2>
+        <sql:query dataSource="${db}" var="result">
+            SELECT vend_name, prod_name, prod_price
+            FROM vendors, products
+            WHERE vendors.vend_id = products.vend_id;
+        </sql:query>
+
+        <table>
+            <tr>
+                <th>vend_name</th>
+                <th>prod_name</th>
+                <th>prod_price</th>
+            </tr>
+
+            <c:forEach var="row" items="${result.rows}">
+                <tr>
+                    <td> <c:out value="${row.vend_name}"/></td>
+                    <td> <c:out value="${row.prod_name}"/></td>
+                    <td> <c:out value="${row.prod_price}"/></td>
+                </tr>
+            </c:forEach>
+        </table>
 
     </body>
 </html>
